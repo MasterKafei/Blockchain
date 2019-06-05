@@ -16,4 +16,4 @@
 /vendor/
 /web/bundles/
 /yarm/data/*
-/.idea/*
+/.idea/

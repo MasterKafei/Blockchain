@@ -33,6 +33,11 @@ class Block implements \JsonSerializable
     private $data;
 
     /**
+     * @var string
+     */
+    private $proofOfWork;
+
+    /**
      * Get id
      *
      * @return int
@@ -122,6 +127,7 @@ class Block implements \JsonSerializable
             'hash' => $this->getHash(),
             'data' => $this->getData(),
             'creationDate' => $this->getCreationDate()->getTimestamp(),
+            'proofOfWork' => $this->getProofOfWork(),
         );
     }
 
@@ -143,7 +149,9 @@ class Block implements \JsonSerializable
             ->setPreviousHash($data->previousHash)
             ->setHash($data->hash)
             ->setData($data->data)
-            ->setCreationDate($date);
+            ->setCreationDate($date)
+            ->setProofOfWork($data->proofOfWork)
+        ;
     }
 
     /**
@@ -167,6 +175,29 @@ class Block implements \JsonSerializable
     public function getData()
     {
         return $this->data;
+    }
+
+    /**
+     * Get proof of work.
+     *
+     * @return string
+     */
+    public function getProofOfWork()
+    {
+        return $this->proofOfWork;
+    }
+
+    /**
+     * Set proof of work.
+     *
+     * @param string $proofOfWork
+     * @return Block
+     */
+    public function setProofOfWork($proofOfWork)
+    {
+        $this->proofOfWork = $proofOfWork;
+
+        return $this;
     }
 }
 

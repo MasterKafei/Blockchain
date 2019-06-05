@@ -6,6 +6,7 @@ use AppBundle\Entity\Block;
 use AppBundle\Entity\Node;
 use AppBundle\Service\Util\EntityManager\Yarm;
 use AppBundle\Service\Util\HashAlgorithm;
+use AppBundle\Service\Util\ProofOfWork;
 use AppBundle\Service\Util\RequestBusiness;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
@@ -21,8 +22,9 @@ class BlockBusiness
     private $nodeBusiness;
     private $requestBusiness;
     private $router;
+    private $proofOfWork;
 
-    public function __construct(Yarm $registry, HashAlgorithm $algorithm, KernelInterface $kernel, NodeBusiness $business, RequestBusiness $requestBusiness, RouterInterface $router)
+    public function __construct(Yarm $registry, HashAlgorithm $algorithm, KernelInterface $kernel, NodeBusiness $business, RequestBusiness $requestBusiness, RouterInterface $router, ProofOfWork $proofOfWork)
     {
         $this->registry = $registry;
         $this->hashAlgorithmService = $algorithm;
@@ -30,6 +32,7 @@ class BlockBusiness
         $this->nodeBusiness = $business;
         $this->requestBusiness = $requestBusiness;
         $this->router = $router;
+        $this->proofOfWork = $proofOfWork;
     }
 
     public function getNextBlock(Block $previousBlock)
@@ -51,6 +54,10 @@ class BlockBusiness
             $this->mine($block)
         );
 
+        $block->setProofOfWork(
+            $this->proofOfWork->getProofOfWork($block->getData())
+        );
+
 
         $this->sendBlock($block, [$this->nodeBusiness->getCurrentNode()]);
         $this->registry->persist($block);
@@ -66,7 +73,7 @@ class BlockBusiness
 
     public function isBlockValid(Block $block)
     {
-        return $this->mine($block) === $block->getHash();
+        return $this->mine($block) === $block->getHash() && $this->proofOfWork->isProofOfWorkValid($block->getProofOfWork());
     }
 
     public function getGenesisBlock()
@@ -79,7 +86,11 @@ class BlockBusiness
             ->setData("0")
             ->setHash(
                 $this->mine($block)
-            );
+            )
+            ->setProofOfWork(
+                $this->proofOfWork->getProofOfWork($block->getData())
+            )
+            ;
     }
 
     public function isGenesisBlock(Block $block)
