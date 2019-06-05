@@ -1,0 +1,9 @@
+app_block_creation_create_block:
+    path: /create_block/
+    defaults: { _controller: 'AppBundle:Block\Creation:createBlock' }
+    methods: ['POST']
+
+app_block_creation_receive_block:
+    path:   /receive_block/
+    defaults: { _controller: 'AppBundle:Block\Creation:receiveBlock'}
+    methods: ['POST']

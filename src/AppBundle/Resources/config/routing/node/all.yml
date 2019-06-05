@@ -1,0 +1,7 @@
+app_node_creation:
+    prefix: /creation/
+    resource: "creation.yml"
+
+app_node_listing:
+    prefix: /listing/
+    resource: "listing.yml"

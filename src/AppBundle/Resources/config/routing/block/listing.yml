@@ -1,0 +1,3 @@
+app_block_listing_list_block:
+    path:   /list_block/
+    defaults: { _controller: 'AppBundle:Block\Listing:listBlock' }

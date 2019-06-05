@@ -1,0 +1,17 @@
+AppBundle\Entity\Node:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\NodeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        host:
+            type: string
+            length: 255
+        port:
+            type: integer
+    lifecycleCallbacks: {  }

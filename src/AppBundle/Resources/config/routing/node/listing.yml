@@ -1,0 +1,3 @@
+app_node_listing_list_node:
+    path:   /list_node/
+    defaults: { _controller: 'AppBundle:Node\Listing:listNode' }

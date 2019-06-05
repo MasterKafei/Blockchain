@@ -1,0 +1,4 @@
+app_node_creation_create_node:
+    path: /create_node/
+    defaults: { _controller: 'AppBundle:Node\Creation:createNode' }
+    methods: ['POST']

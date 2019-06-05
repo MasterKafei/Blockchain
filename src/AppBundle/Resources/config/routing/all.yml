@@ -1,0 +1,15 @@
+app_origin:
+    path: /
+    defaults: { _controller: 'AppBundle:Origin:index' }
+
+app_is_up:
+    path: /is_up/
+    defaults: { _controller: 'AppBundle:Origin:isUp' }
+
+app_block:
+    prefix: /block/
+    resource: "block/all.yml"
+
+app_node:
+    prefix: /node/
+    resource: "node/all.yml"

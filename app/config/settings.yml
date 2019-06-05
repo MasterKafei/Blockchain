@@ -1,0 +1,9 @@
+parameters:
+    hash_algorithm: sha256
+    value_needed_in_hash: "000000"
+    yarm_directory: '%kernel.project_dir%/yarm'
+    host: 127.0.0.1
+    port: 8000
+    main_node:
+        host: 127.0.0.1
+        port: 8000

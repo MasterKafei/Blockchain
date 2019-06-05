@@ -1,0 +1,11 @@
+app_block_creation:
+    prefix: /creation/
+    resource: "creation.yml"
+
+app_block_listing:
+    prefix: /listing/
+    resource: "listing.yml"
+
+app_block_validating:
+    prefix: /validating/
+    resource: "validating.yml"

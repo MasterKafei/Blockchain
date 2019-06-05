@@ -1,0 +1,9 @@
+app_block_validating_validate_block:
+    path: /validate_block/{id}
+    defaults: { _controller: 'AppBundle:Block\Validating:validateBlock' }
+    requirements:
+        id: \d+
+
+app_block_validating_validate_blocks:
+    path: /validate_blocks/
+    defaults: { _controller: 'AppBundle:Block\Validating:validateBlocks' }

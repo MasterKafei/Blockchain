@@ -1,0 +1,26 @@
+AppBundle\Entity\Block:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\BlockRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        hash:
+            type: string
+            length: 255
+            unique: true
+            nullable: true
+        previousHash:
+            type: string
+            length: 255
+            unique: true
+        data:
+            type: string
+            length: 255
+        creationDate:
+            type: datetime
+    lifecycleCallbacks: {  }

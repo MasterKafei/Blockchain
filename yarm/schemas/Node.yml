@@ -1,0 +1,2 @@
+entity_name: AppBundle\Entity\Node
+repository_class: AppBundle\Repository\Yarm\NodeRepository
