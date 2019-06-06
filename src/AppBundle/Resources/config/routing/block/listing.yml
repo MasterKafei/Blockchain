@@ -1,3 +1,7 @@
 app_block_listing_list_block:
     path:   /list_block/
     defaults: { _controller: 'AppBundle:Block\Listing:listBlock' }
+
+app_block_listing_download_block:
+    path: /download_block/
+    defaults: { _controller: 'AppBundle:Block\Listing:downloadBlockChain' }
